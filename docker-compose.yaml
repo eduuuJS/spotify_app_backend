@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:15.4
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: P@ssword1234_
+      POSTGRES_DB: spotify
+    container_name: spotify
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data 700 #it will atribute permission 777 to this directory
