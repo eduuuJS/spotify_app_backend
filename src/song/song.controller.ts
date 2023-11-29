@@ -19,6 +19,11 @@ export class SongController {
     return this.songService.findAll();
   }
 
+  @Get('/list/:like')
+  findByName( @Param('like') like: string) {
+    return this.songService.findByName(like);
+  }
+
   @Put('like/:id')
   likeOrDislike(@Param('id', ParseUUIDPipe) id: string, @Body() likeOrDislikeSongDto: LikeOrDislikeSongDto) {
     return this.songService.likeOrDislike(id, likeOrDislikeSongDto.liked);

@@ -18,15 +18,15 @@ export class Song {
     hrefPhoto: string;
 
     @Column('text')
+    color: string;
+
+    @Column('text')
     hrefSound: string;
 
     @Column('bool', {
         default: true
     })
     liked: boolean;
-
-    @Column('numeric')
-    plays: number;
 
     @ManyToMany(() => Playlist, playlist => playlist.songs)
     playlist: Playlist[];

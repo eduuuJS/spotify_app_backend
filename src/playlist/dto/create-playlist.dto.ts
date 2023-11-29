@@ -36,6 +36,13 @@ export class CreatePlaylistDto {
     @ApiProperty({
         required: true,
     })
+    @IsNotEmpty()
+    @IsString()
+    hrefPhoto: string;
+
+    @ApiProperty({
+        required: true,
+    })
     @IsArray()
     @IsString({ each: true })
     songs: string[];

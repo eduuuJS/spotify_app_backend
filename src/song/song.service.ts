@@ -3,6 +3,7 @@ import { CreateSongDto } from './dto/create-song.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Song } from './entities/song.entity';
 import { Repository } from 'typeorm/repository/Repository';
+import { ILike } from 'typeorm';
 
 @Injectable()
 export class SongService {
@@ -20,6 +21,14 @@ export class SongService {
 
   async findAll() {
     return await this.songRepository.find();
+  }
+
+  async findByName(like: string) {
+    return await this.songRepository.find({
+      where: [
+        { name: ILike(`%${like}%`) }
+      ]
+    });
   }
 
   async likeOrDislike(id: string, like: boolean) {

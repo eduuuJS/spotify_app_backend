@@ -27,11 +27,11 @@ export class PlaylistService {
     const playlist = await this.playlistRepository.findOne({ where: { id }, relations: {
       songs: true
     } });
-    return playlist.songs;
+    return playlist;
   }
 
   async create(createPlaylistDto: CreatePlaylistDto) {
-    const { name, autor, description, color, songs } = createPlaylistDto;
+    const { name, autor, description, color, hrefPhoto, songs } = createPlaylistDto;
     const songsFinded = await this.songRepository.findBy({id: In(songs)});
     const playlist = new Playlist();
 
@@ -39,6 +39,7 @@ export class PlaylistService {
     playlist.autor = autor;
     playlist.description = description;
     playlist.color = color;
+    playlist.hrefPhoto = hrefPhoto;
     playlist.songs = songsFinded;
 
     const savedPlaylist = await this.playlistRepository.save(playlist);

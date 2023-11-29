@@ -25,6 +25,12 @@ export class CreateSongDto {
         required: true,
     })
     @IsString()
+    color: string;
+
+    @ApiProperty({
+        required: true,
+    })
+    @IsString()
     hrefSound: string;
 
     @ApiProperty({
@@ -34,10 +40,4 @@ export class CreateSongDto {
     @IsBoolean()
     liked?: boolean;
 
-    @ApiProperty({
-        required: true,
-    })
-    @IsOptional()
-    @IsNumber()
-    plays?: number;
 }

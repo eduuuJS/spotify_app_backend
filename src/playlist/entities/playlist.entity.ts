@@ -19,6 +19,9 @@ export class Playlist {
     @Column('text')
     color: string;
 
+    @Column('text')
+    hrefPhoto: string;
+
     @ManyToMany(() => Song, song => song.playlist)
     @JoinTable({
         name: 'playlists_songs',
